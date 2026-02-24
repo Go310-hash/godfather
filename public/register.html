@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration - PCHS Bamenda</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">PCHS</span>
+        <span class="logo-text">PCHS Bamenda</span>
+      </a>
+      <nav class="nav-main">
+        <button type="button" class="theme-toggle" aria-label="Toggle dark or light theme">
+          <span class="theme-icon"></span>
+          <span class="theme-label">Dark</span>
+        </button>
+        <a href="index.html">Home</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="login.html" class="btn btn-outline">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <div class="container narrow">
+      <h1 class="page-title">Student Registration</h1>
+      <p class="page-subtitle">Progressive Comprehensive High School Bamenda</p>
+
+      <form id="registration-form" class="form-card" enctype="multipart/form-data">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="fullName" required placeholder="e.g. John Mbah" />
+            <span class="error-msg" data-for="fullName"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" required />
+            <span class="error-msg" data-for="dateOfBirth"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender <span class="required">*</span></label>
+            <select id="gender" name="gender" required>
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg" data-for="gender"></span>
+          </div>
+
+          <div class="form-group full">
+            <label for="classApplyingFor">Class Applying For <span class="required">*</span></label>
+            <select id="classApplyingFor" name="classApplyingFor" required>
+              <option value="">Select class</option>
+              <option value="Form 1" data-fee="50000">Form 1 — 50,000 XAF</option>
+              <option value="Form 2" data-fee="55000">Form 2 — 55,000 XAF</option>
+              <option value="Form 3" data-fee="60000">Form 3 — 60,000 XAF</option>
+              <option value="Form 4" data-fee="65000">Form 4 — 65,000 XAF</option>
+              <option value="Form 5" data-fee="70000">Form 5 — 70,000 XAF</option>
+              <option value="Lower Sixth" data-fee="75000">Lower Sixth — 75,000 XAF</option>
+              <option value="Upper Sixth" data-fee="80000">Upper Sixth — 80,000 XAF</option>
+            </select>
+            <p class="fee-display" id="fee-display">Registration fee: <strong id="fee-amount">—</strong> XAF</p>
+            <span class="error-msg" data-for="classApplyingFor"></span>
+          </div>
+
+          <div class="form-group full">
+            <label for="parentGuardianName">Parent / Guardian Name <span class="required">*</span></label>
+            <input type="text" id="parentGuardianName" name="parentGuardianName" required placeholder="Full name" />
+            <span class="error-msg" data-for="parentGuardianName"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="e.g. 237 6XX XXX XXX" />
+            <span class="error-msg" data-for="phoneNumber"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required placeholder="email@example.com" />
+            <span class="error-msg" data-for="email"></span>
+          </div>
+
+          <div class="form-group full">
+            <label for="address">Address <span class="required">*</span></label>
+            <textarea id="address" name="address" rows="3" required placeholder="Full residential address"></textarea>
+            <span class="error-msg" data-for="address"></span>
+          </div>
+
+          <div class="form-group full">
+            <label for="previousSchool">Previous School</label>
+            <input type="text" id="previousSchool" name="previousSchool" placeholder="Name of last school attended" />
+          </div>
+
+          <div class="form-group full">
+            <label for="passportPhoto">Passport Photo</label>
+            <input type="file" id="passportPhoto" name="passportPhoto" accept="image/jpeg,image/png,image/gif,image/webp" />
+            <span class="help">JPG, PNG, GIF or WebP. Max 5MB.</span>
+            <span class="error-msg" data-for="passportPhoto"></span>
+          </div>
+
+          <div class="form-group full payment-section">
+            <h3 class="section-label">Payment (Orange Money / MTN Mobile Money)</h3>
+            <p class="help">Choose how you will pay the registration fee. Payment can be completed after submission.</p>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="paymentProvider" value="orange" />
+                <span class="payment-label">Orange Money</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentProvider" value="mtn" />
+                <span class="payment-label">MTN Mobile Money</span>
+              </label>
+            </div>
+            <div class="form-group" id="payment-phone-wrap" style="display: none;">
+              <label for="paymentPhone">Mobile money phone number</label>
+              <input type="tel" id="paymentPhone" name="paymentPhone" placeholder="e.g. 6XX XXX XXX or 2XX XXX XXX" />
+              <span class="help">Number linked to your Orange Money or MTN MoMo account.</span>
+              <span class="error-msg" data-for="paymentPhone"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-lg" id="submit-btn">Submit Registration</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; PCHS Bamenda. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="js/theme.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/registration.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - PCHS Bamenda</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="dashboard-body">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span class="logo-icon">PCHS</span>
+      <span class="sidebar-title">Admin</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="active" data-page="dashboard">Dashboard</a>
+      <a href="#" data-page="students">Students</a>
+    </nav>
+    <div class="sidebar-footer">
+      <span class="user-name" id="admin-name">Admin</span>
+      <button type="button" class="btn btn-outline btn-sm" id="logout-btn">Logout</button>
+    </div>
+  </aside>
+
+  <div class="dashboard-main">
+    <header class="dashboard-header">
+      <h1 id="page-heading">Dashboard</h1>
+      <button type="button" class="theme-toggle" aria-label="Toggle dark or light theme">
+        <span class="theme-icon"></span>
+        <span class="theme-label">Dark</span>
+      </button>
+    </header>
+
+    <div id="dashboard-page" class="dashboard-content">
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-pending">0</span>
+          <span class="stat-label">Pending</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-approved">0</span>
+          <span class="stat-label">Approved</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="stat-rejected">0</span>
+          <span class="stat-label">Rejected</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="students-page" class="dashboard-content" hidden>
+      <div class="toolbar">
+        <input type="search" id="search-input" class="input-search" placeholder="Search by name, email, phone..." />
+        <select id="filter-status">
+          <option value="">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+        </select>
+        <button type="button" class="btn btn-primary" id="export-csv-btn">Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Class</th>
+              <th>Fee (XAF)</th>
+              <th>Payment</th>
+              <th>Contact</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="students-tbody">
+            <tr><td colspan="8" class="empty-state">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: View / Approve / Reject -->
+  <div id="student-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Student Details</h2>
+        <button type="button" class="modal-close" data-close="modal" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body" id="student-modal-body">
+        <!-- Filled by JS -->
+      </div>
+      <div class="modal-footer" id="student-modal-footer">
+        <button type="button" class="btn btn-outline" data-close="modal">Close</button>
+        <button type="button" class="btn btn-success" id="approve-btn">Approve</button>
+        <button type="button" class="btn btn-danger" id="reject-btn">Reject</button>
+        <button type="button" class="btn btn-danger" id="delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/theme.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
